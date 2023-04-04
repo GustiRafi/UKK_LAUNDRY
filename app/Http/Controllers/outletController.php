@@ -38,17 +38,19 @@ class outletController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nama' => ['required','max:255'],
+            'nama' => ['required','max:3'],
             'alamat' => ['required'],
             'telp' => ['required','min:12','max:15']
         ]);
-        
 
-        dd($validate);
+        if ($validate->fails())
+        {
+            return response()->json(['errors'=>$validate->errors()->all()]);
+        }
 
-        // outlet::create($validate);
+        outlet::create($validate);
 
-        // return $validate;
+        return response('berhasil');
     }
 
     /**
@@ -88,9 +90,12 @@ class outletController extends Controller
             'telp' => ['required','min:12','max:15']
         ]);
 
+        $outlet = outlet::find($id);
+        $nama = $outlet->nama;
+
         outlet::where('id',$id)->update($validate);
 
-        return response('berhasi');
+        return response($nama);
     }
 
     /**
@@ -101,6 +106,10 @@ class outletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $outlet = outlet::find($id);
+        $name = $outlet->nama;
+        outlet::Where('id',$id)->first()->delete();
+
+        return response($name);
     }
 }

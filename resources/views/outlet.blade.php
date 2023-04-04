@@ -35,8 +35,10 @@
                                         <h4 class="title" id="defaultModalLabel">Tambah Outlet</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/outlet" method="post" id="addoutlet">
-                                            @csrf
+                                        <div class="alert alert-danger" style="display:none">
+                                            <ul></ul>
+                                        </div>
+                                        <form action="" method="post" id="addoutlet">
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="nama"
                                                     id="nama" required>
@@ -122,7 +124,6 @@
                                                                                 class="form-control"
                                                                                 value="{{ $outlet->telp }}" required>
                                                                         </div>
-                                                                        {{-- </form> --}}
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                 class="btn btn-default btn-round waves-effect"
@@ -132,6 +133,7 @@
                                                                                 class="btn btn-danger waves-effect"
                                                                                 data-dismiss="modal">CLOSE</button>
                                                                         </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,32 +164,43 @@
 <script>
     $(document).ready(function () {
         // tambah outlet
-        // $('#addoutlet').on('submit', function (e) {
-        //     e.preventDefault();
-        //     $.ajax({
-        //         type: 'post',
-        //         url: '/outlet',
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         },
-        //         data: $("#addoutlet").serializeArray(),
-        //         success: function (data) {
-        //             $('#addoutlet')[0].reset();
-        //             $('#dataoutlet').load(document.URL + ' #dataoutlet');
-        //             swal(
-        //                 'SUCCESS!!',
-        //                 'Berhasil menambahkan outlet baru',
-        //                 'success'
-        //             )
-        //         }
-        //     });
-        // });
+        $('#addoutlet').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: '/outlet',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: $("#addoutlet").serializeArray(),
+                success: function (data) {
+                    $('#addoutlet')[0].reset();
+                    $('#dataoutlet').load(document.URL + ' #dataoutlet');
+                    swal(
+                        'SUCCESS!!',
+                        'Berhasil menambahkan outlet baru',
+                        'success'
+                    )
+                },
+                error: function (errors) {
+                    $.each(errors, function (key, value) {
+                        $('.alert-danger').show();
+                        // $('.alert-danger').append('<p>' + value['message'] +
+                        // '</p>');
+                        $(".alert-danger").find("ul").append('<li>' + value['message'] +
+                            '</li>');
+                    });
+                    $(".alert-danger").find("ul").append('<li>' + errors.value +
+                            '</li>');
+                }
+            });
+        });
 
         // hapus outlet
         $('.deleteoutlet').on('submit', function (e) {
             e.preventDefault();
             swal({
-                    title: "Yakin mau hapus outlet ini?",
+                    title: "Yakin mau hapus outlet ini?Menghapus outlet juga akan otomatis menghapus semua data yang berkaitan dengan outlet",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -217,36 +230,9 @@
                 });
         });
 
-        // edit outlet
-        // $('.editoutlet').on('submit',function(e){
-        //     e.preventDefault();
-        //     $.ajax({
-        //         type: 'post',
-        //         url: $(this).data('route'),
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         },
-        //         data:{
-        //             '_method': 'PUT',
-        //             $(".editoutlet").serializeArray(),
-        //         },
-        //         success: function (data) {
-        //             $('.editoutlet')[0].reset();
-        //             $('#dataoutlet').load(document.URL + ' #dataoutlet');
-        //             swal(
-        //                 'SUCCESS!!',
-        //                 'Berhasil Memperbarui outlet ' + data,
-        //                 'success'
-        //             )
-        //         }
-        //     });
-        // });
     });
 
     function editoutlet(id) {
-        // console.log(id);
-        // console.log($("#editnama"+id).val());
-        // preventDefault();
         $.ajax({
             type: 'PUT',
             url: '/outlet/' + id,
