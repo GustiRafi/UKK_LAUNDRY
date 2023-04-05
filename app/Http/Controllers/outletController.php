@@ -38,7 +38,7 @@ class outletController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nama' => ['required','max:3'],
+            'nama' => ['required'],
             'alamat' => ['required'],
             'telp' => ['required','min:12','max:15']
         ]);
@@ -93,7 +93,7 @@ class outletController extends Controller
         $outlet = outlet::find($id);
         $nama = $outlet->nama;
 
-        outlet::where('id',$id)->update($validate);
+        outlet::where('id',$id)->first()->update($validate);
 
         return response($nama);
     }

@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Transaksi</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Bite Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Transaksi</a></li>
                         <li class="breadcrumb-item active">Riwayat</li>
                     </ul>
@@ -24,7 +24,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
-                        <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal"
                             data-target="#tambahpaket">Buat Transaksi</button>
                             {{-- modal untuk mrnambah paket --}}
                         <div class="modal fade" id="tambahpaket" tabindex="-1" role="dialog">

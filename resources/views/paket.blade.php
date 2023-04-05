@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Paket Laundry</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item active">Daftar Paket</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i class="zmdi zmdi-sort-amount-desc"></i></button>
@@ -23,7 +23,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
-                        <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal"
                             data-target="#tambahpaket">Tambah Paket </button>
                             {{-- modal untuk mrnambah paket --}}
                         <div class="modal fade" id="tambahpaket" tabindex="-1" role="dialog">
@@ -37,10 +37,12 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="nama"
                                                     id="name" required>
+                                                <span id="nama-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="Harga" name="harga"
                                                     id="harga" required>
+                                                <span id="harga-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="id_outlet" class="form-control show-tick" id="id_outlet">
@@ -49,6 +51,7 @@
                                                         <option value="{{$item->id}}">{{$item->nama}}</option>
                                                     @endforeach
                                                 </select>
+                                                <span id="id_outlet-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="jenis" class="form-control show-tick" id="jenis">
@@ -58,6 +61,7 @@
                                                     <option value="bed cover">Bed Cover</option>
                                                     <option value="kaos">Kaos</option>
                                                 </select>
+                                                <span id="jenis-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit"
@@ -97,8 +101,8 @@
                                                 @endif
                                                 @endforeach
                                             </td>
-                                            <td colspan="2">
-                                                <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                                            <td>
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal"
                             data-target="#editpaket{{$pkt->id}}"><i class="zmdi zmdi-edit"></i></button>
                             {{-- modal untuk mrnambah paket --}}
                         <div class="modal fade" id="editpaket{{$pkt->id}}" tabindex="-1" role="dialog">
@@ -112,10 +116,12 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="nama"
                                                     id="editnama{{$pkt->id}}" value="{{$pkt->nama}}" required>
+                                                <span id="editnama{{$pkt->id}}-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="Harga" name="harga"
                                                     id="editharga{{$pkt->id}}" value="{{$pkt->harga}}" required>
+                                                <span id="editharga{{$pkt->id}}-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="id_outlet" class="form-control show-tick" id="editid_outlet{{$pkt->id}}">
@@ -128,6 +134,7 @@
                                                     @endif
                                                     @endforeach
                                                 </select>
+                                                <span id="editid_outlet{{$pkt->id}}-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="jenis" class="form-control show-tick" id="editjenis{{$pkt->id}}">
@@ -157,6 +164,7 @@
                                                     <option value="kaos" selected>Kaos</option>
                                                     @endif
                                                 </select>
+                                                <span id="editjenis{{$pkt->id}}-error" class="invalid-feedback"></span>
                                             </div>
                                         </form>
                                     </div>
@@ -210,6 +218,13 @@
                         'Berhasil menambahkan paket baru',
                         'success'
                     )
+                },
+                error: function (xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function (key, value) {
+                        $('#' + key).addClass('is-invalid');
+                        $('#' + key + '-error').text(value[0]);
+                    });
                 }
                });
             });
@@ -269,7 +284,14 @@
                         'Berhasil Memperbarui paket ' + data,
                         'success'
                     )
-                }
+                },
+                error: function (xhr, status, error) {
+                var errors = xhr.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    $('#edit' + key + id).addClass('is-invalid');
+                    $('#edit' + key + id + '-error').text(value[0]);
+                });
+            }
             });
     }
     </script>

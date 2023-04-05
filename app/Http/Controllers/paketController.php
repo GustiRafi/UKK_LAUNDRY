@@ -89,7 +89,7 @@ class paketController extends Controller
             'harga' => ['required']
         ]); 
 
-        paket::where('id',$id)->update($validate);
+        paket::where('id',$id)->first()->update($validate);
 
         return response('berhasil');
     }
@@ -102,7 +102,7 @@ class paketController extends Controller
      */
     public function destroy($id)
     {
-        paket::where('id',$id)->delete();
+        paket::where('id',$id)->first()->delete();
 
         return response('berhasil menghapus');
     }

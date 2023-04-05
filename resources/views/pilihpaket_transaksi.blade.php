@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Transaksi</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Bite Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Transaksi</a></li>
                         <li class="breadcrumb-item active">Pilih Paket</li>
                     </ul>
@@ -53,8 +53,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <label for="">Untuk diskon,biaya tambahan dan pajak bisa di kosongkan</label>
                                 <div class="row clearfix">
-                                    <label for="">Untuk diskon,biaya tambahan dan pajak bisa di kosongkan</label>
                                     <div class="col-12 col-lg-4 mb-3">
                                         <input type="text" name="biaya_tambahan" class="form-control" id="biaya_tambahan" placeholder="Biaya Tambahan">
                                     </div>

@@ -10,4 +10,14 @@ class paket extends Model
     use HasFactory;
 
     protected $guarded =['id'];
+
+    public function outlet()
+    {
+        return $this->belongsTo(outlet::class);
+    }
+
+    public function detail_transaksi()
+    {
+        return $this->hasMany(detail_transaksi::class);
+    }
 }

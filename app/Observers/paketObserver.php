@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Models\paket;
+use App\Models\log;
+use Illuminate\Support\Facades\Auth;
 
 class paketObserver
 {
@@ -14,7 +16,12 @@ class paketObserver
      */
     public function created(paket $paket)
     {
-        //
+        log::create([
+            'model' => 'Paket',
+            'action' => 'Create',
+            'log' => 'Paket '.$paket->nama.' telah ditambahkan oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -25,7 +32,12 @@ class paketObserver
      */
     public function updated(paket $paket)
     {
-        //
+        log::create([
+            'model' => 'Paket',
+            'action' => 'update',
+            'log' => 'Paket '.$paket->nama.' di edit oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -36,7 +48,12 @@ class paketObserver
      */
     public function deleted(paket $paket)
     {
-        //
+        log::create([
+            'model' => 'Paket',
+            'action' => 'Delete',
+            'log' => 'Paket '.$paket->nama.' di edit oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**

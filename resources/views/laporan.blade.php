@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Generate Laporan</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Bite Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item active">Laporan</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i

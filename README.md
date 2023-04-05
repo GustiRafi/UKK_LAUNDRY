@@ -1,66 +1,47 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/84b688603aeda9ae6ecda2c508e862c20f2157639278e6c2.png)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##  **LAUNDRY**
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Laundry 💦
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/43fad2a9765afa5f1c8f90ce5d149708d2ab83dfc2053601.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Laundry adalah aplikasi website modern untuk bisnis laundry yang dibangun dengan menggunakan framework Laravel. Aplikasi ini memberikan kemudahan dalam mengelola bisnis laundry Anda dengan efektif dan efisien. Dengan menggunakan Laundry, Anda dapat mengelola outlet,paket laundry,karyawan, pelanggan, dan penerimaan pembayaran dengan mudah dan terorganisir.
 
-## Learning Laravel
+## Fitur Fitur 😎
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Berikut adalah beberapa fitur unggulan yang dapat ditemukan pada Laundry:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+*   **Manajemen Pelanggan:** Membuat dan mengelola daftar pelanggan yang terdaftar pada bisnis laundry Anda. Dengan adanya fitur ini, Anda dapat melihat riwayat transaksi pelanggan Anda dengan mudah dan menambahkan promo eksklusif untuk meningkatkan loyalitas pelanggan.
+*   **Manajemen Pesanan:** Melacak pesanan yang diterima oleh bisnis laundry Anda. Anda dapat memeriksa status pesanan dan melacak pesanan yang tertunda, sedang diproses, atau sudah selesai.
+*   **Manajemen Pengguna:** Membuat dan mengelola pengguna untuk memastikan setiap pengguna memiliki akses yang sesuai. Anda dapat mengatur hak akses pengguna dan membatasi akses terhadap data yang sensitif.
+*   **Manajemen Pembayaran:** Menerima dan melacak pembayaran dari pelanggan. Dengan fitur ini, Anda dapat dengan mudah menambahkan metode pembayaran baru dan meninjau riwayat transaksi dengan pelanggan.
+*   **Laporan:** Menghasilkan laporan bulanan tentang penghasilan bisnis laundry Anda. Anda dapat melacak kinerja bisnis laundry Anda dan membuat keputusan yang lebih baik untuk meningkatkan keuntungan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Teknologi Pembuatan ⚡
 
-## Laravel Sponsors
+Laundry Laravel dibangun dengan menggunakan beberapa teknologi, di antaranya:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+*   **Laravel:** Laravel adalah framework PHP yang kuat dan fleksibel yang memudahkan pembuatan aplikasi web yang kompleks.
+*   **Bootstrap:** Bootstrap adalah kerangka kerja front-end open-source yang digunakan untuk merancang tata letak halaman web yang responsif.
+*   **MySQL:** MySQL adalah sistem manajemen basis data open-source yang digunakan untuk menyimpan dan mengelola data.
 
-### Premium Partners
+## Instalasi 💪
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Untuk menginstal Laundry, ikuti langkah-langkah di bawah ini:
 
-## Contributing
+1.  Clone repositori Laundry ke dalam direktori web server Anda.
+2.  Salin file **.env.example** menjadi **.env** dan sesuaikan pengaturan koneksi database.
+3.  Jalankan perintah **composer install** untuk menginstal semua dependensi PHP yang diperlukan.
+4.  Jalankan perintah **php artisan key:generate** untuk menghasilkan kunci aplikasi.
+5.  Jalankan perintah **php artisan migrate** untuk membuat tabel-tabel database.
+6.  Jalankan perintah **php artisan db:seed** untuk mengisi data pada database
+7.  Jalankan perintah **php artisan serve** untuk memulai server web Laravel.
+8.  Buka browser web dan arahkan ke **http://localhost:8000** untuk mengakses aplikasi Laundry .
+9.  Buka browser web dan arahkan ke **http://localhost:8000/home ** untuk mengakses halaman admin aplikasi Laundry
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Kontribusi 🙋
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Kami sangat menghargai kontribusi dari para pengembang untuk membuat Laundry Laravel menjadi lebih baik. Jika Anda ingin berkontribusi, silakan fork repositori ini dan buatlah pull request untuk perubahan yang Anda inginkan. Terima kasih telah berkontribusi!

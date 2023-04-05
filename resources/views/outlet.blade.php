@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Data Outlet</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item active">Daftar Outlet</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i
@@ -25,7 +25,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
-                        <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal"
                             data-target="#tambahoutlet">Tambah Outlet</button>
                         {{-- modal untuk mrnambah outlet --}}
                         <div class="modal fade" id="tambahoutlet" tabindex="-1" role="dialog">
@@ -42,14 +42,17 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="nama"
                                                     id="nama" required>
+                                                <span id="nama-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <textarea name="alamat" id="alamat" placeholder="alamat"
                                                     class="form-control" cols="30" rows="10" required></textarea>
+                                                <span id="alamat-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="tel" name="telp" placeholder="No Telp" id="telp"
                                                     class="form-control" required>
+                                                <span id="telp-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit"
@@ -85,7 +88,7 @@
                                                 <td>{{ $outlet->alamat }}</td>
                                                 <td>{{ $outlet->telp }}</td>
                                                 <td colspan="2">
-                                                    <button type="button" class="btn btn-default waves-effect m-r-20"
+                                                    <button type="button" class="btn btn-primary waves-effect m-r-20"
                                                         data-toggle="modal"
                                                         data-target="#editoutlet{{ $outlet->id }}"><i
                                                             class="zmdi zmdi-edit"></i></button>
@@ -107,6 +110,8 @@
                                                                                 placeholder="nama" name="nama"
                                                                                 id="editnama{{ $outlet->id }}"
                                                                                 value="{{ $outlet->nama }}" required>
+                                                                            <span id="editnama{{ $outlet->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <textarea name="alamat"
@@ -116,6 +121,9 @@
                                                                                 value="{{ $outlet->alamat }}"
                                                                                 rows="10"
                                                                                 required>{{ $outlet->alamat }}</textarea>
+                                                                            <span
+                                                                                id="editalamat{{ $outlet->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <input type="tel" name="telp"
@@ -123,6 +131,8 @@
                                                                                 id="edittelp{{ $outlet->id }}"
                                                                                 class="form-control"
                                                                                 value="{{ $outlet->telp }}" required>
+                                                                            <span id="edittelp{{ $outlet->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -182,16 +192,12 @@
                         'success'
                     )
                 },
-                error: function (errors) {
+                error: function (xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
                     $.each(errors, function (key, value) {
-                        $('.alert-danger').show();
-                        // $('.alert-danger').append('<p>' + value['message'] +
-                        // '</p>');
-                        $(".alert-danger").find("ul").append('<li>' + value['message'] +
-                            '</li>');
+                        $('#' + key).addClass('is-invalid');
+                        $('#' + key + '-error').text(value[0]);
                     });
-                    $(".alert-danger").find("ul").append('<li>' + errors.value +
-                            '</li>');
                 }
             });
         });
@@ -251,6 +257,13 @@
                     'Berhasil Memperbarui outlet ' + data,
                     'success'
                 )
+            },
+            error: function (xhr, status, error) {
+                var errors = xhr.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    $('#edit' + key + id).addClass('is-invalid');
+                    $('#edit' + key + id + '-error').text(value[0]);
+                });
             }
         });
     }

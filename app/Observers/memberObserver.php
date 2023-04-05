@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Models\member;
+use App\Models\log;
+use Illuminate\Support\Facades\Auth;
 
 class memberObserver
 {
@@ -14,7 +16,12 @@ class memberObserver
      */
     public function created(member $member)
     {
-        //
+        log::create([
+            'model' => 'member',
+            'action' => 'Create',
+            'log' => 'Memeber baru telah  ditambahkan oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -25,7 +32,12 @@ class memberObserver
      */
     public function updated(member $member)
     {
-        //
+        log::create([
+            'model' => 'member',
+            'action' => 'update',
+            'log' => 'Member '.$member->nama.' di edit oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -36,7 +48,12 @@ class memberObserver
      */
     public function deleted(member $member)
     {
-        //
+        log::create([
+            'model' => 'Outlet',
+            'action' => 'delete',
+            'log' => 'Outlet '.$outlet->nama.' di haapus oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**

@@ -87,7 +87,7 @@ class memberController extends Controller
             'gender' => ['required'],
         ]);
 
-        member::where('id',$id)->update($validate);
+        member::where('id',$id)->first()->update($validate);
 
         return response("berhasil");
 
@@ -101,7 +101,7 @@ class memberController extends Controller
      */
     public function destroy($id)
     {
-        member::find($id)->delete();
+        member::find($id)->first()->delete();
 
         return response('berhasil');
     }

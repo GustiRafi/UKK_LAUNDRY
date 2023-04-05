@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Models\outlet;
+use App\Models\log;
+use Illuminate\Support\Facades\Auth;
 
 class outletObserver
 {
@@ -14,7 +16,12 @@ class outletObserver
      */
     public function created(outlet $outlet)
     {
-        //
+        log::create([
+            'model' => 'Outlet',
+            'action' => 'Create',
+            'log' => 'Outlet Baru di tambahkan oleh '.Auth::user()->name,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -25,7 +32,12 @@ class outletObserver
      */
     public function updated(outlet $outlet)
     {
-        //
+        log::create([
+            'model' => 'Outlet',
+            'action' => 'update',
+            'log' => 'Outlet '.$outlet->nama.' di edit oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -36,7 +48,12 @@ class outletObserver
      */
     public function deleted(outlet $outlet)
     {
-        //
+      log::create([
+            'model' => 'Outlet',
+            'action' => 'Delete',
+            'log' => 'Outlet '.$outlet->nama.' di hapus oleh '.Auth::user()->name ,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**

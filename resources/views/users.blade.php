@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Daftar Pengguna</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Bite Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item active">user</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i class="zmdi zmdi-sort-amount-desc"></i></button>
@@ -23,7 +23,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
-                        <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal"
                             data-target="#tambahpengguna">Tambah pengguna</button>
                             {{-- modal untuk mrnambah outlet --}}
                         <div class="modal fade" id="tambahpengguna" tabindex="-1" role="dialog">
@@ -37,14 +37,17 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="name"
                                                     id="name" required>
+                                                <span id="name-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="Username" name="username"
                                                     id="username" required>
+                                                    <span id="username-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="email" name="email" placeholder="Email" id="email"
                                                     class="form-control" required>
+                                                    <span id="email-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="id_outlet" class="form-control show-tick" id="id_outlet">
@@ -53,6 +56,7 @@
                                                         <option value="{{$item->id}}">{{$item->nama}}</option>
                                                     @endforeach
                                                 </select>
+                                                <span id="id_outlet-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="role" class="form-control show-tick" id="role">
@@ -60,6 +64,7 @@
                                                     <option value="owner">Owner</option>
                                                     <option value="kasir">Kasir</option>
                                                 </select>
+                                                <span id="role-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit"
@@ -139,6 +144,13 @@
                         'Berhasil menambahkan pengguna baru',
                         'success'
                     )
+                },
+                error: function (xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function (key, value) {
+                        $('#' + key).addClass('is-invalid');
+                        $('#' + key + '-error').text(value[0]);
+                    });
                 }
                });
             });

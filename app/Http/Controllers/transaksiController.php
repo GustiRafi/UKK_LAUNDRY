@@ -87,7 +87,7 @@ class transaksiController extends Controller
 
     public function hapuspaket($id)
     {
-        detail_transaksi::where('id',$id)->delete();
+        detail_transaksi::where('id',$id)->first()->delete();
         return response('berhasil');
     }
 
@@ -126,7 +126,7 @@ class transaksiController extends Controller
     {
         $data['dibayar'] = $req->dibayar;
         $data['tanggal_bayar'] = now();
-        transaksi::where('id',$id)->update($data);
+        transaksi::where('id',$id)->first()->update($data);
 
         return response('success');
     }

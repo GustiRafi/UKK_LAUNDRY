@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Models\user;
+use App\Models\log;
+use Illuminate\Support\Facades\Auth;
+
 
 class userObserver
 {
@@ -14,7 +17,12 @@ class userObserver
      */
     public function created(user $user)
     {
-        //
+        log::create([
+            'model' => 'User',
+            'action' => 'Create',
+            'log' => 'user baru di tambahkan',
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -36,7 +44,12 @@ class userObserver
      */
     public function deleted(user $user)
     {
-        //
+        log::create([
+            'model' => 'User',
+            'action' => 'delete',
+            'log' => 'user '.$user->name.' dihapus oleh ' .Auth::user()->name,
+            'id_user' => Auth::user()->id,
+        ]);
     }
 
     /**

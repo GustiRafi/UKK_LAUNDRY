@@ -7,7 +7,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Membership</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Laundry</a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i>Laundry</a></li>
                         <li class="breadcrumb-item active">Daftar Member</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i
@@ -25,7 +25,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card">
-                        <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal"
+                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal"
                             data-target="#tambahmember">Tambah Member </button>
                         {{-- modal untuk mrnambah member --}}
                         <div class="modal fade" id="tambahmember" tabindex="-1" role="dialog">
@@ -39,14 +39,17 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="nama" name="nama"
                                                     id="name" required>
+                                                <span id="nama-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <textarea name="alamat" id="alamat" placeholder="alamat"
                                                     class="form-control" cols="30" rows="10" required></textarea>
+                                                <span id="alamat-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="tel" name="telp" placeholder="No Telp" id="telp"
                                                     class="form-control" required>
+                                                <span id="telp-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <select name="gender" class="form-control show-tick" id="gender">
@@ -54,6 +57,7 @@
                                                     <option value="l">Laki Laki</option>
                                                     <option value="p">Perempuan</option>
                                                 </select>
+                                                <span id="gender-error" class="invalid-feedback"></span>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit"
@@ -88,8 +92,8 @@
                                                 <td>{{ $mbr->alamat }}</td>
                                                 <td>{{ $mbr->gender }}</td>
                                                 <td>{{ $mbr->telp }}</td>
-                                                <td colspan="2">
-                                                    <button type="button" class="btn btn-default waves-effect m-r-20"
+                                                <td>
+                                                    <button type="button" class="btn btn-primary waves-effect m-r-20"
                                                         data-toggle="modal"
                                                         data-target="#editmember{{ $mbr->id }}"><i class="zmdi zmdi-edit"></i></button>
                                                     {{-- modal untuk mrnambah member --}}
@@ -108,6 +112,9 @@
                                                                                 placeholder="nama" name="nama"
                                                                                 id="editnama{{ $mbr->id }}"
                                                                                 value="{{ $mbr->nama }}" required>
+                                                                            <span
+                                                                                id="editnama{{ $mbr->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <textarea name="alamat"
@@ -116,6 +123,9 @@
                                                                                 class="form-control" cols="30"
                                                                                 value="{{ $mbr->alamat }}" rows="10"
                                                                                 required>{{ $mbr->alamat }}</textarea>
+                                                                                <span
+                                                                                id="editalamat{{ $mbr->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <select name="gender"
@@ -133,12 +143,18 @@
                                                                                     </option>
                                                                                 @endif
                                                                             </select>
+                                                                            <span
+                                                                                id="editgender{{ $mbr->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <input type="tel" class="form-control"
                                                                                 placeholder="telp" name="telp"
                                                                                 id="edittelp{{ $mbr->id }}"
                                                                                 value="{{ $mbr->telp }}" required>
+                                                                                <span
+                                                                                id="edittelp{{ $mbr->id }}-error"
+                                                                                class="invalid-feedback"></span>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -196,6 +212,13 @@
                         'Berhasil menambahkan member baru',
                         'success'
                     )
+                },
+                error: function (xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function (key, value) {
+                        $('#' + key).addClass('is-invalid');
+                        $('#' + key + '-error').text(value[0]);
+                    });
                 }
             });
         });
@@ -256,6 +279,13 @@
                     'Berhasil Memperbarui member ' + data,
                     'success'
                 )
+            },
+            error: function (xhr, status, error) {
+                var errors = xhr.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    $('#edit' + key + id).addClass('is-invalid');
+                    $('#edit' + key + id + '-error').text(value[0]);
+                });
             }
         });
     }

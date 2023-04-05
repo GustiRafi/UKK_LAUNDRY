@@ -10,4 +10,9 @@ class member extends Model
     use HasFactory;
 
     protected $guarded =['id'];
+
+    public function transaksi()
+    {
+        return $this->belongsTo(transaksi::class);
+    }
 }
