@@ -28,6 +28,7 @@
             <li class="@if(Route::is('transaksi')) active @endif open"><a href="/transaksi"><i class="zmdi zmdi-time-interval"></i><span>Riwayat Transaksi</span></a></li>
             @endcan
             <li class="@if(Route::is('laporan')) active @endif open"><a href="/laporan"><i class="zmdi zmdi-archive"></i><span>Buat Laporan</span></a></li>
+            <li><a id="btn-logout" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i><span>Logout</span></a></li>
         </ul>
     </div>
 </aside>
