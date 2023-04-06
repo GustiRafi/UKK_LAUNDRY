@@ -102,8 +102,11 @@ class paketController extends Controller
      */
     public function destroy($id)
     {
+        $pkt = paket::find($id);
+        $nama = $pkt->nama;
+
         paket::where('id',$id)->first()->delete();
 
-        return response('berhasil menghapus');
+        return response($nama);
     }
 }

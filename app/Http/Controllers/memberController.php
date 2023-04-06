@@ -40,7 +40,7 @@ class memberController extends Controller
         $validate = $request->validate([
             'nama' => ['required','max:255'],
             'alamat' => ['required'],
-            'telp' => ['required'],
+            'telp' => ['required','min:12','max:15'],
             'gender' => ['required'],
         ]);
 
@@ -101,8 +101,11 @@ class memberController extends Controller
      */
     public function destroy($id)
     {
-        member::find($id)->first()->delete();
+        $mbr = member::find($id);
+        $nama = $mbr->nama;
 
-        return response('berhasil');
+        member::where("id",$id)->first()->delete();
+
+        return response($nama);
     }
 }

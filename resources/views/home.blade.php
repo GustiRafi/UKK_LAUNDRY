@@ -81,24 +81,26 @@
                 <div class="border border-primary mb-4"></div>
                 <h5 class="text-primary"><b>Log Aktivitas Laundry</b></h5>
                 <div class="pt-5">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                        <thead>
-                            <tr>
-                                <td>No</td>
-                                <td>Log</td>
-                                <td>Tanggal</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($log as $item)
+                    <div class="table-responsive" id="datalog">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->log}}</td>
-                                    <td>{{$item->created_at->isoFormat('dddd, D MMMM Y')}}</td>
+                                    <td>No</td>
+                                    <td>Log</td>
+                                    <td>Tanggal</td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($log as $item)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$item->log}}</td>
+                                        <td>{{$item->created_at->isoFormat('dddd, D MMMM Y')}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

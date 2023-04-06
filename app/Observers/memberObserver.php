@@ -49,9 +49,9 @@ class memberObserver
     public function deleted(member $member)
     {
         log::create([
-            'model' => 'Outlet',
+            'model' => 'member',
             'action' => 'delete',
-            'log' => 'Outlet '.$outlet->nama.' di haapus oleh '.Auth::user()->name ,
+            'log' => 'member '.$member->nama.' di hapus oleh '.Auth::user()->name ,
             'id_user' => Auth::user()->id,
         ]);
     }

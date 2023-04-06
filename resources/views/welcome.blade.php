@@ -102,7 +102,7 @@ https://templatemo.com/tm-584-pod-talk
 
         <section class="latest-podcast-section section-padding pb-0" id="cek">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row">
 
                     <div class="col-lg-12 col-12">
                         <div class="section-title-wrap my-5">
@@ -111,16 +111,20 @@ https://templatemo.com/tm-584-pod-talk
                     </div>
 
                     <div class="col-lg-12 col-12">
-                        <form action="" method="get" class="custom-form search-form flex-fill me-3" role="search" id="cari">
-                            <div class="input-group input-group-lg">
-                                <input name="kode" type="search" class="form-control" id="kode" placeholder="Masukan Kode Invoice"
-                                    aria-label="Search">
-        
-                                <button type="submit" class="form-control" id="submit">
-                                    <i class="bi-search"></i>
-                                </button>
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="" method="get" class="custom-form search-form" style="min-width: 100%" role="search" id="cari">
+                                    <div class="input-group input-group">
+                                        <input name="kode" type="search" class="form-control" id="kode" placeholder="Masukan Kode Invoice"
+                                            aria-label="Search">
+                
+                                        <button type="submit" class="form-control" id="submit">
+                                            <i class="bi-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div class="col-12 mt-4">
