@@ -97,7 +97,7 @@
               </tr>
               <tr>
                 <td colspan="4" class="text-right">Diskon</td>
-                <td>Rp 5.000</td>
+                <td>Rp.{{ number_format($transaksi->diskon,0,',','.') }}</td>
               </tr>
               <tr>
                 <td colspan="4" class="text-right">Biaya Tambahan</td>

@@ -23,15 +23,15 @@
                 <div class="card widget_2 big_icon zmdi zmdi-accounts-alt">
                     <div class="body bg-primary">
                         <h6>Pengguna</h6>
-                        <h2>{{count($user)}} <small class="info">user</small></h2>
+                        <h2 class="text-white"><b>{{count($user)}} <small class="info">USER</small></b></h2>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="card widget_2 big_icon zmdi zmdi-card-membership">
                     <div class="body bg-info">
-                        <h6>Member</h6>
-                        <h2>{{count($member)}} <small class="info">memberr</small></h2>
+                        <h6>Pelanggan</h6>
+                        <h2 class="text-white"><b>{{count($member)}} <small class="info">PELANGGAN</small></b></h2>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="card widget_2 big_icon zmdi zmdi-city">
                     <div class="body bg-success">
                         <h6>Outlet</h6>
-                        <h2>{{count($outlet)}} <small class="info">Outlet</small></h2>
+                        <h2 class="text-white" ><b>{{count($outlet)}} <small class="info">OUTLET</small></b></h2>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card widget_2 big_icon zmdi zmdi-shopping-basket">
                     <div class="body bg-warning">
                         <h6>Paket Laundry</h6>
-                        <h2>{{count($paket)}} <small class="info">paket laundry</small></h2>
+                        <h2 class="text-white"><b>{{count($paket)}} <small class="info">PAKET LAUNDRY</small></b></h2>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="card widget_2 big_icon zmdi zmdi-balance-wallet">
                     <div class="body bg-success">
                         <h6>Transaksi</h6>
-                        <h2>{{count($transaksi)}} <small class="info">Transaksi</small></h2>
+                        <h2 class="text-white"><b>{{count($transaksi)}} <small class="info">TRANSAKSI</small></b></h2>
                     </div>
                 </div>
             </div>
