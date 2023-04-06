@@ -73,8 +73,15 @@
                 <th>Harga</th>
               </tr>
             </thead>
+            @php
+                 $subtotal=0;
+            @endphp
             <tbody>
               @foreach ($detail as $item)
+              @php
+                   $harga = $item->paket->harga*$item->qty;
+                   $subtotal += ($harga);
+              @endphp
               <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->paket->nama}}</td>
@@ -88,7 +95,7 @@
               </tr>
               @endforeach
               <tr>
-                <td colspan="4"" class="text-right">Subtotal</td>
+                <td colspan="4" class="text-right">Subtotal</td>
                 <td>Rp.{{ number_format($subtotal,0,',','.') }}</td>
               </tr>
               <tr>
@@ -97,7 +104,11 @@
               </tr>
               <tr>
                 <td colspan="4" class="text-right">Diskon</td>
-                <td>Rp.{{ number_format($transaksi->diskon,0,',','.') }}</td>
+                @php     
+                    $total = $transaksi->pajak + $transaksi->biaya_tambahan + $subtotal;
+                    $discount = $total * $transaksi->diskon / 100;
+                @endphp
+                <td>Rp.{{ number_format($discount,0,',','.') }}</td>
               </tr>
               <tr>
                 <td colspan="4" class="text-right">Biaya Tambahan</td>
