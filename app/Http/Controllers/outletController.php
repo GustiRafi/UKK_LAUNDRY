@@ -43,10 +43,10 @@ class outletController extends Controller
             'telp' => ['required','min:12','max:15']
         ]);
 
-        if ($validate->fails())
-        {
-            return response()->json(['errors'=>$validate->errors()->all()]);
-        }
+        // if ($validate->fails())
+        // {
+        //     return response()->json(['errors'=>$validate->errors()->all()]);
+        // }
 
         outlet::create($validate);
 

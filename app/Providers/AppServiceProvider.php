@@ -8,10 +8,10 @@ use App\Models\outlet;
 use App\Models\member;
 use App\Models\transaksi;
 use App\Models\paket;
-use App\Observers\UserObserver;
-use App\Observers\OutletObserver;
+use App\Observers\userObserver;
+use App\Observers\outletObserver;
 use App\Observers\memberObserver;
-use App\Observers\TransaksiObserver;
+use App\Observers\transaksiObserver;
 use App\Observers\paketObserver;
 use Illuminate\Support\Facades\Gate;
 
@@ -50,11 +50,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-        User::observe(UserObserver::class);
-        outlet::observe(OutletObserver::class);
+        User::observe(userObserver::class);
+        outlet::observe(outletObserver::class);
         member::observe(memberObserver::class);
         paket::observe(paketObserver::class);
-        transaksi::observe(TransaksiObserver::class);
+        transaksi::observe(transaksiObserver::class);
 
     }
 }
