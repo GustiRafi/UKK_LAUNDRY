@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/GustiRafi" target="_blank"><img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/84b688603aeda9ae6ecda2c508e862c20f2157639278e6c2.png" width="400" alt="laundry"></a></p>
+<p align="center"><a href="https://github.com/GustiRafi" target="_blank"></a></p>
 <br>
 <h1 align-'center'><b>LAUNDRY</b></h1>
 ---
